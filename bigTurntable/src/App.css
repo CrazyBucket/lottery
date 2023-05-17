@@ -1,8 +1,12 @@
 .background {
-  background-image: url('./assets/bcImg.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  }
+  
+  .wheel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
