@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import { LuckyWheel } from "@lucky-canvas/react";
 import bcImg from "./assets/bcImg.jpg";
-import Modal from "./components/Modal";
+import Modal from "./components/Modal/Modal";
+import DigitSlot from "./components/DigitSlot/DigitSlot";
 import "./App.css";
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
   const [btn, setBtn] = useState("重抽");
   const [reward, setReward] = useState("周边奖");
   const [history, setHistory] = useState([]);
+  const [num, setNum] = useState(0);
   const [blocks] = useState([{ padding: "10px", background: "#b14c3a" }]);
   const prizes = [
     {
@@ -87,7 +89,9 @@ const App = () => {
   };
 
   const handleEnd = prize => {
-    let x = Math.floor(Math.random() * 100) + 1;
+    let x = Math.floor(Math.random() * 100);
+    setNum(Array.from(String(x).padStart(2, "0"), Number));
+    console.log(x, num);
     setShowModal(true);
     setText("恭喜" + x + "号抽到" + prize.fonts[0].text);
     setReward(prize.fonts[0].text);
@@ -129,7 +133,15 @@ const App = () => {
       {showModal &&
         (showBtn ? (
           <Modal
-            text={text}
+            text={
+              <div className="lotteryNum">
+                <span>恭喜</span>
+                <span>
+                  <DigitSlot num={num} />
+                </span>
+                <span>号抽到{reward}</span>
+              </div>
+            }
             optionalButton={{ text: btn, onClick: handleOptionalClick }}
             requiredButton={{ text: "确定", onClick: handleRequiredClick }}
             onClose={handleClose}
