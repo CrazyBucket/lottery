@@ -30,7 +30,6 @@ const DigitSlot = ({ num }) => {
     { fonts: [{ text: "9", top: "5%" }] },
   ]);
   const defaultStyle = {
-    borderRadius: Infinity,
     background: "#f35e36",
     fontSize: "32px",
     fontColor: "#fff",
