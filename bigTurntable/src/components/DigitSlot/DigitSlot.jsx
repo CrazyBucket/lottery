@@ -5,13 +5,12 @@ const DigitSlot = ({ num }) => {
   useEffect(() => {
     myLucky.current.play();
     setTimeout(() => {
-      console.log(num);
       myLucky.current.stop(num);
     }, 500);
   }, []);
   const [blocks] = useState([
-    { padding: "2px", background: "#f9e8b2" },
-    { padding: "2px", background: "#f9e8b2" },
+    { padding: "2px", background: "#89c2ed" },
+    { padding: "2px", background: "#89c2ed" },
   ]);
   const [slots] = useState([
     { order: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], direction: 1 },
@@ -29,12 +28,14 @@ const DigitSlot = ({ num }) => {
     { fonts: [{ text: "8", top: "5%" }] },
     { fonts: [{ text: "9", top: "5%" }] },
   ]);
+
   const defaultStyle = {
-    background: "#f35e36",
+    background: "#1B8BE1",
     fontSize: "32px",
-    fontColor: "#fff",
+    fontColor: "#000",
     borderRadius: "5px",
   };
+
   const defaultConfig = {
     rowSpacing: "20px",
     colSpacing: "10px",
