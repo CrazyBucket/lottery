@@ -6,7 +6,7 @@ const DigitSlot = ({ num }) => {
     myLucky.current.play();
     setTimeout(() => {
       myLucky.current.stop(num);
-    }, 500);
+    }, 200);
   }, []);
   const [blocks] = useState([
     { padding: "2px", background: "#89c2ed" },

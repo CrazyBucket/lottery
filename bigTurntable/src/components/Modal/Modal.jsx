@@ -18,14 +18,10 @@ const Modal = ({ text, optionalButton, requiredButton, onClose }) => {
     onClose();
   };
 
-  const handleBackdropClick = () => {
-    setIsVisible(false);
-    onClose();
-  };
 
   return isVisible ? (
     <div className="modal-wrapper">
-      <div className="modal-backdrop" onClick={handleBackdropClick}></div>
+      <div className="modal-backdrop"></div>
       <div className="modal-box">
         <div className="modal-text">{text}</div>
         <div>

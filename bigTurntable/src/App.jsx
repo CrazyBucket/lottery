@@ -35,7 +35,6 @@ const App = () => {
     setShowName(false);
     setShowModal(true);
     const randomObject = data[Math.floor(Math.random() * data.length)];
-    console.log(data);
     console.log(randomObject);
     setReward(randomObject);
     const str = randomObject.id;
@@ -48,13 +47,13 @@ const App = () => {
     setTimeout(() => {
       setShowName(true);
     }, 5000);
+    let newList = [...history];
+    newList = [...history, `${randomObject.name} ${randomObject.id}`];
+    setHistory(newList);
   };
 
   const handleSeeHistory = () => {
     setShowRecord(true);
-    let newList = [...history];
-    newList = [...history, `${reward.name} ${reward.id}`];
-    setHistory(newList);
   };
   return (
     <div className="background">
@@ -87,16 +86,18 @@ const App = () => {
             onClose={handleClose}
           />
         ))}
-      <div
-        className="record"
-        onClick={() => {
-          handleSeeHistory();
-        }}
-      >
-        抽奖记录
-      </div>
-      ;
-      {showRecord && (
+      {!showModal && (
+        <div
+          className="record"
+          onClick={() => {
+            handleSeeHistory();
+          }}
+        >
+          抽奖记录
+        </div>
+      )}
+
+      {!showModal && showRecord && (
         <Modal
           text={
             history.length === 0
